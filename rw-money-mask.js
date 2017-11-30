@@ -5,8 +5,8 @@
     .module('rw.moneymask', [])
     .directive('moneyMask', moneyMask);
 
-  moneyMask.$inject = ['$filter', '$window'];
-  function moneyMask($filter, $window) {
+  moneyMask.$inject = ['$filter'];
+  function moneyMask($filter) {
     var directive = {
       require: 'ngModel',
       link: link,
@@ -37,7 +37,7 @@
       scope.$watch('model', function onModelChange(newValue) {
         newValue = parseFloat(newValue) || 0;
 
-        if (newValue !== cents) {
+        if(newValue !== cents) {
           cents = Math.round(newValue * 100);
         }
 
@@ -46,41 +46,25 @@
       });
 
       element.on('keydown', function (e) {
-        if ((e.which || e.keyCode) === 8) {
-          cents = parseInt(cents.toString().slice(0, -1)) || 0;
-
-          ngModelCtrl.$setViewValue(cents / 100);
-          ngModelCtrl.$render();
-          scope.$apply();
-          e.preventDefault();
-        }
-      });
-
-      element.on('keypress', function (e) {
-        var key = e.which || e.keyCode;
+        var char = String.fromCharCode(e.keyCode);
         
-        if(key === 9 || key === 13) {
-          return true;
-        }
-        
-        var char = String.fromCharCode(key);
+        if(e.keyCode === 9) return true; // Tab key to change the focus of the element
         e.preventDefault();
 
-        if (char.search(/[0-9\-]/) === 0) {
+        if (e.keyCode === 8 || e.keyCode === 46) { // Backspace or delete
+          cents = parseInt(cents.toString().slice(0, -1)) || 0;
+
+        } else if (char.search(/[0-9\-]/) === 0) {
           cents = parseInt(cents + char);
-        }
-        else {
+
+        } else if (char.search(/[a-i`]/) === 0) { // Numpads
+          var charNumpad = String.fromCharCode(e.keyCode - 48);
+          cents = parseInt(cents + charNumpad);
+        } else {
           return false;
         }
-        
-        var target = e.target || e.srcElement;
 
-        if(target.selectionEnd != target.selectionStart) {
-          ngModelCtrl.$setViewValue(parseInt(char) / 100);
-        }
-        else {
-          ngModelCtrl.$setViewValue(cents / 100);
-        }
+        ngModelCtrl.$setViewValue(cents / 100);
         ngModelCtrl.$render();
         scope.$apply();
       })
