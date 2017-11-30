@@ -1,27 +1,34 @@
 {
-  "name": "angular-money-mask",
-  "version": "1.0.4",
-  "description": "Angular directive to mask inputs with currency values",
-  "main": "rw-money-mask.js",
+  "bugs": {
+    "url": "https://github.com/felipedspereira/flp-money-mask/issues"
+  },
+  "dependencies": {},
+  "description": "An AngularJS (1.x) directive to mask inputs with currency values",
+  "devDependencies": {},
+  "directories": {},
+  "homepage": "https://github.com/felipedspereira/flp-money-mask#readme",
+  "keywords": [
+    "mask",
+    "money",
+    "currency"
+  ],
+  "license": "ISC",
+  "main": "flp-money-mask.js",
+  "maintainers": [
+    {
+      "name": "felipedspereira",
+      "email": "felipe.dspereira@gmail.com"
+    }
+  ],
+  "name": "flp-money-mask",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rwaltenberg/angular-money-mask.git"
+    "url": "git+https://github.com/felipedspereira/flp-money-mask.git"
   },
-  "keywords": [
-    "angular",
-    "input",
-    "mask",
-    "currency",
-    "directive"
-  ],
-  "author": "Rodrigo Waltenberg <rwaltenberg@gmail.com>",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/rwaltenberg/angular-money-mask/issues"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/rwaltenberg/angular-money-mask#readme",
-  "dependencies": {
-    "angular": "^1.5",
-    "jquery": "^3.1.0"
-  }
+  "version": "1.0.0"
 }
