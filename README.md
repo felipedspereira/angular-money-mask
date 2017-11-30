@@ -5,13 +5,13 @@ An AngularJS (1.x) directive to mask inputs with currency values
 #### Reference script file
 
 ```html
-<script src="rw-money-mask.min.js"></script>
+<script src="flp-money-mask.min.js"></script>
 ```
 
 #### Inject `rw.moneymask` module
 
 ```javascript
-angular.module('yourApp', ['rw.moneymask'])
+angular.module('yourApp', ['flp.moneymask'])
 ```
 
 #### Bind directive `money-mask`
