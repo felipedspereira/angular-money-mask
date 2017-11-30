@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('rw.moneymask', [])
+    .module('flp.moneymask', [])
     .directive('moneyMask', moneyMask);
 
   moneyMask.$inject = ['$filter'];
